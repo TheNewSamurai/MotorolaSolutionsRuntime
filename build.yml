@@ -1,0 +1,28 @@
+sdkversion: "4.0.0"
+name: "MotorolaSolutionsRuntime"
+version: "1.0"
+vendor: "rhomobile"
+build: "debug"
+bbver: "6.0"
+applog: "rholog.txt"
+iphone:
+  configuration: "Release"
+  sdk: "iphonesimulator6.0"
+  provisionprofile: 
+  codesignidentity: 
+  entitlements: 
+  BundleIdentifier: "com.rhomobile.motorolasolutionsruntime"
+  BundleURLScheme: "motorolasolutionsruntime"
+wp:
+  productid: "b51f9ec0-6ff3-0131-02c0-38e85631dd7a"
+symbian:
+  uid: "0xecd8842f"
+android:
+  version: "4.1"
+  capabilities: 
+extensions:
+  - rho-javascript
+app_type: "rhoelements"
+capabilities:
+  - network_state
+  - sdcard

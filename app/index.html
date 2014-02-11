@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Loading Configuration</title>
+		<meta name="viewport" content="initial-scale=1.0, width=device-width"/>
+		<script src="/public/api/rhoapi-modules.js" type="text/javascript"></script>
+
+		<script type="text/javascript">
+		function myStartUrl() {
+			//var startPage = new RhoFile("startPage.txt", 2);
+			//startPage = Rho.RhoFile.join(Rho.Application.publicFolder, "startPage.txt");
+			var creatorPath = '/sdcard/Android/data/com.rhomobile.motorolasolutionsruntime';
+			var startPage = Rho.RhoFile.join(creatorPath, "startPage.txt");
+			if(Rho.RhoFile.exists(startPage)) {
+				myURL = Rho.RhoFile.read(startPage);
+				Rho.WebView.navigate(myURL);
+			} else {
+				var freshPage = new Rho.RhoFile(startPage, 4);
+				//Checks that the file was created and written to
+				if (freshPage.write('http://www.motorolasolutions.com') == 32) {
+					freshPage.close();
+					Rho.Notification.showPopup({
+						title: 'Success',
+						message: 'Make URL Change to startPage.txt located at ' + creatorPath,
+						buttons:[{id:'ok', title:'close'}]
+					},
+						function(e){
+							if(e.button_id == 'ok') {
+								Rho.Application.quit();
+							}
+						}
+					)
+					//alert("Success: Make URL Change to startPage.txt located at " + creatorPath);
+				}
+				else {
+					alert("File Write Error");
+				}
+			//alert(freshPage.write('MyFirstUrl'));
+			}
+		}
+		</script>
+	</head>
+	<body onload="myStartUrl()">
+		<div align="center">
+			<h3>Loading...</h3>
+		</div>
+	</body>
+</html>
